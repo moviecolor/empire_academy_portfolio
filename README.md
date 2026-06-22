@@ -6,7 +6,14 @@ A Star Wars-style 3D perspective credit crawl showcasing the Evil Empire Academy
 
 ## 🎬 The Clip
 
-> **[EMPIRE ACADEMY.mov](EMPIRE%20ACADEMY.mov)** — 1:52 | 1920×1080 | 24fps | H.264
+<video src="EMPIRE_ACADEMY.mp4" controls width="100%" poster="screenshot.jpg"></video>
+
+> **Duration:** 1:52 | **Resolution:** 1920×1080 | **Frame Rate:** 24fps | **Codec:** H.264
+
+| Format | File | Size |
+|--------|------|------|
+| 🎥 MP4 (web) | [`EMPIRE_ACADEMY.mp4`](EMPIRE_ACADEMY.mp4) | 33MB |
+| 🎬 MOV (source) | [`EMPIRE ACADEMY.mov`](EMPIRE%20ACADEMY.mov) | 127MB |
 
 A scrolling text crawl with motion-blurred 3D perspective, starfield background, and the signature Star Wars yellow — built entirely with Python + OpenCV.
 
