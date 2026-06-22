@@ -2,7 +2,27 @@
 
 ![Screenshot](screenshot.jpg)
 
-A Star Wars-style 3D perspective credit crawl showcasing the Evil Empire Academy's finest course offerings.
+A Star Wars-style 3D perspective credit crawl promoting a vibe-coded website built during a Coursera test. The website needed a backend server and was ... well, accidentally hilarious — so it got a promo video.
+
+> **⚠️ The original Coursera project is MIA — if you know where it lives, please open an issue or PR to add it back to this repo.**
+
+---
+
+## 📁 Project Structure
+
+```
+├── EMPIRE ACADEMY.mov          # Final composite (127MB)
+├── EMPIRE_ACADEMY.mp4          # Web-friendly version (33MB)
+├── screenshot.jpg              # Thumbnail
+├── assets/                     # Build scripts + your screenshots go here
+│   ├── build_empire_academy_crawl_v3_motionblur.py
+│   ├── build_portfolio_crawl_v3_motionblur.py
+│   ├── build_crawl_v3.py
+│   ├── build_crawl_v4.py
+│   ├── build_empire_academy_crawl.py
+│   └── build_portfolio_crawl_v2.py
+└── README.md
+```
 
 ## 🎬 The Clip
 
@@ -47,6 +67,13 @@ A scrolling text crawl with motion-blurred 3D perspective, starfield background,
 - 5 sub-frames averaged per output frame for natural motion blur
 - FFmpeg libx264 encoding (CRF 17, veryslow preset)
 - Final output rendered in Resolve for audio + color grading
+
+## 📸 Assets
+
+The `assets/` folder contains:
+
+- **Python build scripts** — all versions of the crawl engine (v3 motion blur is the final)
+- **Your screenshots** — drop your build-process screenshots here and they'll show up in the repo
 
 ## 🚀 Usage
 
