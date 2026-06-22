@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚙️ Evil Empire Academy — Course Dashboard</title>
+  <style>
+    /* ═══════════════════════════════════════
+       EVIL EMPIRE THEME — Dark Side Styles
+       ═══════════════════════════════════════ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a28;
+      --bg-hover: #22223a;
+      --border-color: #2a2a40;
+      --text-primary: #e0e0e0;
+      --text-secondary: #8888aa;
+      --accent-red: #cc2222;
+      --accent-red-hover: #ee3333;
+      --accent-gold: #d4a017;
+      --accent-blue: #2255cc;
+      --accent-green: #22aa44;
+      --imperial-white: #f0f0f0;
+      --danger-bg: #330000;
+      --success-bg: #003311;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      background: linear-gradient(135deg, #0d0d14 0%, #1a0a0a 50%, #0d0d14 100%);
+      border-bottom: 2px solid var(--accent-red);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-logo {
+      font-size: 2rem;
+    }
+
+    .header-title h1 {
+      font-size: 1.4rem;
+      color: var(--imperial-white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .header-title p {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .header-badge {
+      background: var(--accent-red);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* ─── Stats Bar ─── */
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .stat-card .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ─── Main Layout ─── */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-left {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      width: 280px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .filter-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.5rem 0.8rem;
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
+      border-color: var(--accent-gold);
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      padding: 0.5rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--accent-red);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-red-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(204, 34, 34, 0.3);
+    }
+
+    .btn-success {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+    }
+
+    .btn-success:hover {
+      background: #22cc55;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(34, 170, 68, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-hover);
+      border-color: var(--accent-gold);
+    }
+
+    .btn-sm {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    .btn-edit {
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background: #3366dd;
+    }
+
+    .btn-delete {
+      background: var(--accent-red);
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background: #dd2222;
+    }
+
+    .btn-cancel {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-cancel:hover {
+      color: var(--text-primary);
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Table ─── */
+    .table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: var(--bg-secondary);
+      border-bottom: 2px solid var(--accent-red);
+    }
+
+    th {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      vertical-align: middle;
+    }
+
+    tr:hover {
+      background: var(--bg-hover);
+    }
+
+    .course-title {
+      font-weight: 600;
+      color: var(--imperial-white);
+    }
+
+    .course-instructor {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    .course-desc {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .difficulty-badge {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .difficulty-beginner { background: #1a3a1a; color: #66dd88; }
+    .difficulty-intermediate { background: #2a2a1a; color: #ddcc66; }
+    .difficulty-advanced { background: #2a1a1a; color: #dd6644; }
+    .difficulty-expert { background: #3a0a0a; color: #ff4444; }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-active { background: #0a2a0a; color: #44cc66; }
+    .status-draft { background: #2a2a0a; color: #cccc44; }
+    .status-archived { background: #2a0a0a; color: #cc4444; }
+
+    .actions-cell {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    /* ─── Modal / Form ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      width: 520px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      font-size: 1.1rem;
+      color: var(--imperial-white);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0 0.3rem;
+    }
+
+    .modal-close:hover {
+      color: var(--accent-red);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ─── Toast ─── */
+    .toast-container {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .toast-success {
+      background: var(--success-bg);
+      border: 1px solid #22aa44;
+      color: #66ee88;
+    }
+
+    .toast-error {
+      background: var(--danger-bg);
+      border: 1px solid var(--accent-red);
+      color: #ff6666;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* ─── Loading ─── */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
+    }
+
+    .loading::after {
+      content: ' ⚡';
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
+    }
+
+    .empty-state h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.8rem 1rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        width: 100%;
+      }
+      .stats-bar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+      .modal {
+        width: 100%;
+        max-width: 100vw;
+        border-radius: 0;
+      }
+    }
+
+    /* ─── Imperial Notice Banner ─── */
+    .imperial-notice {
+      background: linear-gradient(135deg, #1a0a0a 0%, #0d0d14 50%, #1a0a0a 100%);
+      border: 1px solid var(--accent-gold);
+      border-left: 4px solid var(--accent-red);
+      border-right: 4px solid var(--accent-red);
+      margin: 0.75rem 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      box-shadow: 0 0 20px rgba(212, 160, 23, 0.08);
+    }
+    .imperial-notice .notice-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .imperial-notice strong {
+      color: var(--accent-gold);
+      letter-spacing: 1px;
+    }
+    .imperial-notice code {
+      background: var(--bg-card);
+      color: var(--accent-red-hover);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border-color);
+    }
+    .imperial-notice p {
+      margin: 0.25rem 0;
+    }
+    .imperial-notice .notice-version {
+      display: inline-block;
+      background: var(--accent-red);
+      color: white;
+      padding: 0.1rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-right: 0.3rem;
+    }
+    .imperial-notice .notice-version.standalone {
+      background: var(--accent-gold);
+      color: #0a0a0f;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ IMPERIAL NOTICE ═══════ -->
+<div class="imperial-notice">
+  <div class="notice-icon">⚡</div>
+  <div class="notice-content">
+    <strong>IMPERIAL TECHNICAL NOTICE — TWO DEPLOYMENT VARIANTS</strong>
+    <p><span class="notice-version">SERVER</span> <strong>This dashboard</strong> requires the Death Star main reactor (Node.js) to be operational on port 3000. Data stored in Imperial central records (<code>courses.json</code>). Full CRUD via REST API.</p>
+    <p><span class="notice-version standalone">STANDALONE</span> <strong>For quick inspections</strong> — open <code>evil-empire-standalone.html</code> directly in any browser. No server needed. Data persists in your local garrison (localStorage). Pre-loaded with 20 training simulations for immediate review. Lord Vader approved for portable briefings.</p>
+  </div>
+</div>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="header">
+  <div class="header-left">
+    <span class="header-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 600 600">
+      <g transform="translate(-187.14286,-110.93358)">
+        <path d="M487.14284,110.93358C321.54286,110.93358 187.14286,245.33362 187.14286,410.93362C187.14286,576.53362 321.54284,710.93366 487.14284,710.93362C652.74284,710.93362 787.14286,576.53366 787.14286,410.93362C787.14286,245.3336 652.74284,110.93358 487.14284,110.93358zM472.98468,135.80606C473.15348,135.7975 473.32602,135.8143 473.49488,135.80606L474.7704,156.15044C457.46708,156.9754 440.62572,159.49878 424.38774,163.61218L429.42602,183.44638C386.80408,194.2423 348.84062,216.68778 319.09438,247.22188L304.48978,232.93618C292.61156,245.12214 281.99204,258.50792 272.7296,272.85964L255.63776,261.57136C302.31874,189.39406 381.83314,140.43148 472.98468,135.80606zM500.7908,135.80606C592.15428,140.27534 671.88054,189.26038 718.64796,261.57136L701.55612,272.85964C692.3145,258.54406 681.70474,245.1604 669.85968,232.99994L655.2551,247.22188C625.50422,216.67148 587.4965,194.24604 544.8597,183.44638L549.89796,163.61218C533.65998,159.49878 516.81864,156.9754 499.5153,156.15044L500.7908,135.80606zM487.14284,225.72952C495.81632,225.70964 504.48982,226.23972 511.63266,227.26016L500.47194,320.1173C523.9314,323.53822 544.4998,335.8161 558.69898,353.47188L633.18876,297.60452C642.23686,308.87632 652.49448,326.55928 657.8699,339.95148L572.28316,376.5586C576.58506,387.18706 578.9796,398.7686 578.9796,410.93362C578.9796,422.65322 576.80084,433.85232 572.79336,444.16066L657.67856,480.44894C652.44098,493.92068 642.29036,511.57208 633.3801,522.92342L559.4005,467.56628C545.2202,485.62538 524.41626,498.23626 500.66324,501.74994L511.63266,593.07648C497.34694,595.27646 476.93878,595.24488 462.65306,593.20404L473.62244,501.74994C449.85228,498.23372 429.06618,485.58252 414.8852,467.5025L341.09694,522.85964C332.04886,511.58784 321.79124,493.90488 316.4158,480.5127L401.49234,444.09688C397.4985,433.80382 395.30612,422.63222 395.30612,410.93362C395.30612,398.7476 397.6865,387.13824 402.00254,376.49484L316.60714,340.01524C321.84474,326.5435 331.99534,308.8921 340.90562,297.54074L415.58672,353.47188C429.7859,335.8161 450.3543,323.53822 473.81378,320.1173L462.65306,227.38768C469.79592,226.2877 478.46938,225.74942 487.14284,225.72952zM241.9898,285.16832L260.35714,294.22444C252.6104,309.24278 246.2766,325.09906 241.60714,341.6734L261.25,347.22188C255.53952,367.48714 252.44898,388.85 252.44898,410.93362C252.44898,433.03866 255.5288,454.4264 261.25,474.70912L241.60714,480.2576C246.27338,496.80526 252.61992,512.64756 260.35714,527.6428L241.9898,536.69892C222.59162,498.98758 211.63266,456.23444 211.63266,410.93362C211.63266,365.63278 222.59162,322.87966 241.9898,285.16832zM732.29592,285.16832C751.6941,322.87966 762.65302,365.63278 762.65302,410.93362C762.65302,456.23444 751.6941,498.98758 732.29592,536.69892L713.92856,527.6428C721.66906,512.6431 728.0108,496.81066 732.67858,480.2576L713.03572,474.70912C718.7569,454.4264 721.83674,433.03866 721.83674,410.93362C721.83674,388.85 718.74622,367.48714 713.03572,347.22188L732.67858,341.6734C728.01042,325.1037 721.67212,309.23918 713.92856,294.22444L732.29592,285.16832zM272.7296,549.00762C281.99558,563.35906 292.61104,576.74454 304.48978,588.93108L319.09438,574.64536C348.84062,605.17944 386.80408,627.62496 429.42602,638.42088L424.38774,658.25504C440.62572,662.36842 457.46708,664.89184 474.7704,665.7168L473.49488,686.06118C382.13144,681.59186 302.40516,632.60682 255.63776,560.29588L272.7296,549.00762zM701.6199,549.00762L718.64796,560.29588C671.88054,632.60682 592.15428,681.59186 500.7908,686.06118L499.5153,665.7168C516.81864,664.89184 533.65998,662.36842 549.89796,658.25504L544.8597,638.42088C587.4965,627.62118 625.50422,605.19574 655.2551,574.64536L669.85968,588.8673C681.71956,576.69162 692.36698,563.34254 701.6199,549.00762z" fill="#d4a017" fill-opacity="1"/>
+      </g>
+    </svg>
+  </span>
+    <div class="header-title">
+      <h1>Evil Empire Academy</h1>
+      <p>Course Management Dashboard</p>
+    </div>
+  </div>
+  <span class="header-badge">Dark Side Dev</span>
+</header>
+
+<!-- ═══════ STATS BAR ═══════ -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-card">
+    <div class="stat-number" id="statTotal">0</div>
+    <div class="stat-label">Total Courses</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" id="statActive">0</div>
+    <div class="stat-label">Active</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" id="statDraft">0</div>
+    <div class="stat-label">Draft</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" id="statArchived">0</div>
+    <div class="stat-label">Archived</div>
+  </div>
+</div>
+
+<!-- ═══════ MAIN ═══════ -->
+<div class="container">
+
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search courses..." />
+      <select class="filter-select" id="statusFilter">
+        <option value="">All Statuses</option>
+        <option value="active">Active</option>
+        <option value="draft">Draft</option>
+        <option value="archived">Archived</option>
+      </select>
+      <select class="filter-select" id="difficultyFilter">
+        <option value="">All Difficulties</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="expert">Expert</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" id="addCourseBtn">➕ New Course</button>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Instructor</th>
+          <th>Difficulty</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="coursesTableBody">
+        <tr><td colspan="7"><div class="loading">Loading courses from the Death Star database</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════ COURSE FORM MODAL ═══════ -->
+<div class="modal-overlay" id="courseModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Add New Course</h2>
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="courseForm">
+        <input type="hidden" id="courseId" value="" />
+
+        <div class="form-group">
+          <label for="title">Course Title</label>
+          <input type="text" id="title" placeholder="e.g., TIE Fighter Navigation OS" required />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Course description..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="instructor">Instructor</label>
+          <input type="text" id="instructor" placeholder="e.g., Darth Vader" required />
+        </div>
+
+        <div class="form-group">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty" required>
+            <option value="">Select difficulty...</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="">Select category...</option>
+            <option value="flight-systems">Flight Systems</option>
+            <option value="infrastructure">Infrastructure</option>
+            <option value="weapons-systems">Weapons Systems</option>
+            <option value="networking">Networking</option>
+            <option value="embedded-systems">Embedded Systems</option>
+            <option value="robotics">Robotics</option>
+            <option value="data-engineering">Data Engineering</option>
+            <option value="game-dev">Game Dev</option>
+            <option value="project-management">Project Management</option>
+            <option value="cybersecurity">Cybersecurity</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" required>
+            <option value="active">Active</option>
+            <option value="draft">Draft</option>
+            <option value="archived">Archived</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-cancel" id="formCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-success" id="formSubmitBtn">💾 Save Course</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TOAST CONTAINER ═══════ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════ JAVASCRIPT ═══════ -->
+<script>
+  // ─── Configuration ───────────────────────────
+  const API_BASE = 'http://localhost:3000';
+
+  // ─── State ────────────────────────────────────
+  let courses = [];
+  let editingId = null;
+
+  // ─── DOM References ───────────────────────────
+  const tbody = document.getElementById('coursesTableBody');
+  const searchBox = document.getElementById('searchBox');
+  const statusFilter = document.getElementById('statusFilter');
+  const difficultyFilter = document.getElementById('difficultyFilter');
+  const addBtn = document.getElementById('addCourseBtn');
+  const modal = document.getElementById('courseModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const form = document.getElementById('courseForm');
+  const courseId = document.getElementById('courseId');
+  const title = document.getElementById('title');
+  const description = document.getElementById('description');
+  const instructor = document.getElementById('instructor');
+  const difficulty = document.getElementById('difficulty');
+  const category = document.getElementById('category');
+  const status = document.getElementById('status');
+  const submitBtn = document.getElementById('formSubmitBtn');
+
+  // ─── API Helpers ──────────────────────────────
+
+  async function apiFetch(path, options = {}) {
+    const res = await fetch(`${API_BASE}${path}`, {
+      headers: { 'Content-Type': 'application/json' },
+      ...options
+    });
+    return res.json();
+  }
+
+  // ─── Toast Notifications ──────────────────────
+
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = type === 'success' ? '✅ ' : '❌ ';
+    toast.textContent += message;
+    container.appendChild(toast);
+    setTimeout(() => { toast.remove(); }, 4000);
+  }
+
+  // ─── Render Courses ───────────────────────────
+
+  function renderCourses() {
+    const query = searchBox.value.toLowerCase().trim();
+    const statusVal = statusFilter.value;
+    const diffVal = difficultyFilter.value;
+
+    let filtered = courses.filter(c => {
+      if (query && !c.title.toLowerCase().includes(query) &&
+          !c.description.toLowerCase().includes(query) &&
+          !c.instructor.toLowerCase().includes(query)) {
+        return false;
+      }
+      if (statusVal && c.status !== statusVal) return false;
+      if (diffVal && c.difficulty !== diffVal) return false;
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">
+        <h3>🌀 No courses found</h3>
+        <p>Try adjusting your search or filters, or add a new course.</p>
+      </div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = filtered.map(c => `
+      <tr>
+        <td><span style="color:var(--text-secondary);font-size:0.75rem;">#${c.id}</span></td>
+        <td>
+          <div class="course-title">${escHtml(c.title)}</div>
+          <div class="course-desc">${escHtml(c.description)}</div>
+        </td>
+        <td class="course-instructor">${escHtml(c.instructor)}</td>
+        <td><span class="difficulty-badge difficulty-${c.difficulty}">${c.difficulty}</span></td>
+        <td><span style="color:var(--text-secondary);font-size:0.75rem;">${c.category.replace('-', ' ')}</span></td>
+        <td><span class="status-badge status-${c.status}">${c.status}</span></td>
+        <td>
+          <div class="actions-cell">
+            <button class="btn btn-edit btn-sm" onclick="editCourse(${c.id})">✏️ Edit</button>
+            <button class="btn btn-delete btn-sm" onclick="deleteCourse(${c.id})">🗑️</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function escHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ─── Stats ────────────────────────────────────
+
+  function updateStats() {
+    const total = courses.length;
+    const active = courses.filter(c => c.status === 'active').length;
+    const draft = courses.filter(c => c.status === 'draft').length;
+    const archived = courses.filter(c => c.status === 'archived').length;
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statActive').textContent = active;
+    document.getElementById('statDraft').textContent = draft;
+    document.getElementById('statArchived').textContent = archived;
+  }
+
+  // ─── Load Courses ─────────────────────────────
+
+  async function loadCourses() {
+    try {
+      tbody.innerHTML = '<tr><td colspan="7"><div class="loading">Loading courses from the Death Star database</div></td></tr>';
+      const res = await apiFetch('/api/courses');
+      if (res.status === 200) {
+        courses = res.data || [];
+      } else {
+        showToast('Failed to load courses: ' + (res.message || 'Unknown error'), 'error');
+        courses = [];
+      }
+    } catch (err) {
+      showToast('Cannot connect to server. Is it running?', 'error');
+      courses = [];
+    }
+    renderCourses();
+    updateStats();
+  }
+
+  // ─── CRUD Operations ──────────────────────────
+
+  async function deleteCourse(id) {
+    if (!confirm('⚠️ Permanently delete this course? The Empire does not tolerate mistakes.')) return;
+    try {
+      const res = await apiFetch(`/api/courses/${id}`, { method: 'DELETE' });
+      if (res.status === 200) {
+        showToast(res.message || 'Course deleted');
+        await loadCourses();
+      } else {
+        showToast(res.message || 'Failed to delete', 'error');
+      }
+    } catch (err) {
+      showToast('Cannot connect to server', 'error');
+    }
+  }
+
+  function editCourse(id) {
+    const course = courses.find(c => c.id === id);
+    if (!course) return;
+    editingId = id;
+    modalTitle.textContent = '✏️ Edit Course';
+    submitBtn.textContent = '💾 Update Course';
+    courseId.value = id;
+    title.value = course.title;
+    description.value = course.description;
+    instructor.value = course.instructor;
+    difficulty.value = course.difficulty;
+    category.value = course.category;
+    status.value = course.status;
+    modal.classList.add('active');
+  }
+
+  function openAddModal() {
+    editingId = null;
+    modalTitle.textContent = '➕ New Course';
+    submitBtn.textContent = '💾 Save Course';
+    form.reset();
+    courseId.value = '';
+    status.value = 'active';
+    modal.classList.add('active');
+  }
+
+  // ─── Form Submit ──────────────────────────────
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      title: title.value.trim(),
+      description: description.value.trim(),
+      instructor: instructor.value.trim(),
+      difficulty: difficulty.value,
+      category: category.value,
+      status: status.value
+    };
+
+    // Basic client-side validation
+    if (!payload.title || !payload.description || !payload.instructor) {
+      showToast('Title, description, and instructor are required', 'error');
+      return;
+    }
+
+    try {
+      let res;
+      if (editingId) {
+        res = await apiFetch(`/api/courses/${editingId}`, {
+          method: 'PUT',
+          body: JSON.stringify(payload)
+        });
+      } else {
+        res = await apiFetch('/api/courses', {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+      }
+
+      if (res.status === 201 || res.status === 200) {
+        showToast(res.message || 'Course saved successfully');
+        modal.classList.remove('active');
+        await loadCourses();
+      } else {
+        showToast(res.message || 'Validation failed', 'error');
+      }
+    } catch (err) {
+      showToast('Cannot connect to server', 'error');
+    }
+  });
+
+  // ─── Modal Controls ───────────────────────────
+
+  document.getElementById('modalCloseBtn').addEventListener('click', () => modal.classList.remove('active'));
+  document.getElementById('formCancelBtn').addEventListener('click', () => modal.classList.remove('active'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+
+  // ─── Event Listeners ──────────────────────────
+
+  addBtn.addEventListener('click', openAddModal);
+  searchBox.addEventListener('input', renderCourses);
+  statusFilter.addEventListener('change', renderCourses);
+  difficultyFilter.addEventListener('change', renderCourses);
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') modal.classList.remove('active');
+  });
+
+  // ─── Init ─────────────────────────────────────
+
+  loadCourses();
+</script>
+</body>
+</html>

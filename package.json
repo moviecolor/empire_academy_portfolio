@@ -1,0 +1,22 @@
+{
+  "name": "codecrafthub-evil-empire",
+  "version": "1.0.0",
+  "description": "Evil Empire Academy — Death Star coding courses for programmers. A CRUD course management platform.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "death-star",
+    "star-wars",
+    "evil-empire",
+    "courses",
+    "nodejs"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}

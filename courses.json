@@ -1,0 +1,114 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "TIE Fighter Navigation OS: Vector Programming in C++",
+      "description": "Master the art of writing navigation algorithms for TIE/LN starfighters. Covers inertial guidance, hyperspace coordinate calculations, and collision avoidance for tight formation flying.",
+      "instructor": "Darth Vader",
+      "difficulty": "expert",
+      "category": "flight-systems",
+      "status": "active",
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-06-14T20:59:14.444Z"
+    },
+    {
+      "id": 2,
+      "title": "Death Star Reactor Core: Real-Time Systems Programming",
+      "description": "Learn to write stable real-time monitoring software for the DS-1 reactor core. Topics include thermal regulation algorithms, emergency shutdown protocols, and redundant system failover — because one exhaust port is already enough.",
+      "instructor": "Moff Tarkin",
+      "difficulty": "expert",
+      "category": "infrastructure",
+      "status": "active",
+      "createdAt": "2026-02-01T10:00:00.000Z",
+      "updatedAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Stormtrooper Targeting Systems: Introduction to Computer Vision",
+      "description": "A beginner-friendly introduction to computer vision and targeting algorithms. Warning: historical accuracy data suggests graduates achieve only 12% hit rate — your code can only improve from here.",
+      "instructor": "General Veers",
+      "difficulty": "beginner",
+      "category": "weapons-systems",
+      "status": "active",
+      "createdAt": "2026-03-01T10:00:00.000Z",
+      "updatedAt": "2026-03-01T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Imperial HoloNet: Distributed Systems & Message Queues",
+      "description": "Build and maintain the Empire's galaxy-wide communications network. Covers distributed message queues, cross-system replication, and secure point-to-point holo-transmissions. Because the rebellion is always listening.",
+      "instructor": "Admiral Piett",
+      "difficulty": "advanced",
+      "category": "networking",
+      "status": "active",
+      "createdAt": "2026-03-15T10:00:00.000Z",
+      "updatedAt": "2026-03-15T10:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Probe Droid Firmware: Embedded Systems & IoT",
+      "description": "Program the firmware for Viper probe droids deployed across the galaxy. Learn sensor data processing, autonomous navigation, and secure data transmission back to the nearest Star Destroyer.",
+      "instructor": "Grand Admiral Thrawn",
+      "difficulty": "advanced",
+      "category": "embedded-systems",
+      "status": "active",
+      "createdAt": "2026-04-01T10:00:00.000Z",
+      "updatedAt": "2026-04-01T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "title": "AT-AT Walker Control Systems: PLC & Motion Programming",
+      "description": "Program the gait control and balance systems for All Terrain Armored Transports. Includes walking pattern generation, terrain adaptation, and synchronized marching for maximum intimidation.",
+      "instructor": "General Maximilian Veers",
+      "difficulty": "intermediate",
+      "category": "robotics",
+      "status": "active",
+      "createdAt": "2026-04-15T10:00:00.000Z",
+      "updatedAt": "2026-04-15T10:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "title": "Imperial Databases: SQL for Dark Side Analytics",
+      "description": "Query and manage the Empire's vast intelligence databases. Learn to track rebel cell movements, analyze Senate voting patterns (before it was dissolved), and identify force-sensitive individuals across the galaxy.",
+      "instructor": "Director Krennic",
+      "difficulty": "intermediate",
+      "category": "data-engineering",
+      "status": "active",
+      "createdAt": "2026-05-01T10:00:00.000Z",
+      "updatedAt": "2026-05-01T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "title": "Lightsaber Combat Simulator: Game Physics Programming",
+      "description": "Build virtual training simulations for force-sensitive Imperial Inquisitors. Covers physics engine development, particle effects for lightsaber clashes, and force push/pull mechanics in Unreal Engine.",
+      "instructor": "The Grand Inquisitor",
+      "difficulty": "advanced",
+      "category": "game-dev",
+      "status": "draft",
+      "createdAt": "2026-05-15T10:00:00.000Z",
+      "updatedAt": "2026-05-15T10:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "title": "Death Star II Construction: Project Management with Jira",
+      "description": "Manage galaxy-scale construction projects. Learn Agile methodology adapted for Imperial efficiency, resource allocation across star systems, and why the first Death Star's project management failure was a design review problem, not a security one.",
+      "instructor": "Moff Jerjerrod",
+      "difficulty": "intermediate",
+      "category": "project-management",
+      "status": "active",
+      "createdAt": "2026-06-01T10:00:00.000Z",
+      "updatedAt": "2026-06-01T10:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "title": "Imperial Cybersecurity: Defending Against Rebel Hackers",
+      "description": "Protect Imperial systems from Rebel Alliance cyber attacks. Covers network penetration testing, data encryption, secure API design, and why you should never, ever leave thermal exhaust ports unsecured in your architecture.",
+      "instructor": "Admiral Motti",
+      "difficulty": "expert",
+      "category": "cybersecurity",
+      "status": "active",
+      "createdAt": "2026-06-10T10:00:00.000Z",
+      "updatedAt": "2026-06-10T10:00:00.000Z"
+    }
+  ]
+}
